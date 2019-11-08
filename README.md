@@ -17,16 +17,28 @@ Setup and Installation
 ===
 
 ```bash
-git clone https://github.com/looselab/read_until_api_v2.git
-git clone https://github.com/looselab/pyguppyplay.git
-cd read_until_api_v2
+# Make a virtual environment
 python3 -m venv venv3
 source ./venv3/bin/activate
+
+# Clone repos
+git clone https://github.com/looselab/read_until_api_v2.git
+git clone https://github.com/looselab/pyguppyplay.git
+git clone https://github.com/looselab/ru.git
+
+# Install
+cd read_until_api_v2
 pip install --upgrade pip -r requirements.txt
 python setup.py develop
+
 cd ../pyguppyplay
 pip install -r requirements.txt
 python setup.py develop
+
+cd ../ru
+pip install -r requirements.txt
+python setup.py develop
+
 ```
 
 TODO
