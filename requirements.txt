@@ -1,0 +1,10 @@
+grpcio
+requests
+numpy
+google
+protobuf
+toml
+watchdog
+pandas
+mappy
+pyguppy
