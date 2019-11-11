@@ -101,5 +101,8 @@ ENV/
 # mypy
 .mypy_cache/
 
+# pycharm
+.idea
+
 # No Nanopore code
 *rpc/
