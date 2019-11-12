@@ -1,9 +1,4 @@
-grpcio
-requests
 numpy
+grpcio
 google
 protobuf
-toml
-watchdog
-pandas
-mappy
