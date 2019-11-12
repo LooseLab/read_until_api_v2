@@ -7,4 +7,3 @@ toml
 watchdog
 pandas
 mappy
-pyguppy

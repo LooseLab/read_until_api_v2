@@ -1,4 +1,0 @@
-
-[submodule "read_until_api_v2/minknow_api"]
-	path = read_until_api_v2/minknow_api
-	url = git@github.com:nanoporetech/minknow_api.git
