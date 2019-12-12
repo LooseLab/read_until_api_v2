@@ -13,9 +13,7 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 requirements = []
-
 setup_requirements = []
-
 test_requirements = []
 
 setup(
@@ -41,7 +39,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/alexomics/read_until_api_v2',
+    url='https://github.com/LooseLab/read_until_api_v2',
     version=__version__,
     zip_safe=False,
 )

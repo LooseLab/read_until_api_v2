@@ -105,4 +105,5 @@ ENV/
 .idea
 
 # No Nanopore code
-*rpc/
+rpc/
+minknow/
