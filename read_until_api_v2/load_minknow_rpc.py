@@ -22,7 +22,7 @@ import os
 def _minknow_path(operating_system=platform.system()):
     return {
         "Darwin": os.path.join(os.sep, "Applications", "MinKNOW.app", "Contents", "Resources"),
-        "Linux": os.path.join(os.sep, "opt", "ONT", "MinKNOW"),
+        "Linux": os.path.join(os.sep, "opt", "ont", "minknow"),
         "Windows": os.path.join(os.sep, "C:\\\Program Files", "OxfordNanopore", "MinKNOW"),
     }.get(operating_system, None)
 """
@@ -38,7 +38,7 @@ def _minknow_path(operating_system=OPER):
         "Darwin": os.path.join(
             os.sep, "Applications", "MinKNOW.app", "Contents", "Resources"
         ),
-        "Linux": os.path.join(os.sep, "opt", "ONT", "MinKNOW"),
+        "Linux": os.path.join(os.sep, "opt", "ont", "minknow"),
         "Windows": os.path.join(
             os.sep, "C:\\\Program Files", "OxfordNanopore", "MinKNOW"
         ),
