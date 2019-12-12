@@ -5,6 +5,6 @@ google
 protobuf
 toml
 watchdog
-pandas
+pandas==0.24.2
 mappy
-pyguppy
+#pyguppy
