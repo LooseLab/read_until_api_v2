@@ -228,13 +228,13 @@ class ReadUntilClient:
         self.logger.debug("Strand-like classes are: {}.".format(self.strand_classes))
         self.logger.info("Creating rpc connection for device {}.".format(self.device))
 
-        try:
-            from . import rpc
-
-            rpc._load()
-        except Exception as e:
-            self.logger.warning("RPC module not found\n{}".format(e))
-            self.logger.info("Attempting to load RPC")
+        # try:
+        #     from . import rpc
+        #
+        #     rpc._load()
+        # except Exception as e:
+        #     self.logger.warning("RPC module not found\n{}".format(e))
+        #     self.logger.info("Attempting to load RPC")
 
         self.connection, self.message_port = get_rpc_connection(
             target_device=self.device,
@@ -245,6 +245,12 @@ class ReadUntilClient:
 
         self.logger.info("Loaded RPC")
         self.msgs = self.connection.data._pb
+
+        log_waiting = True
+        while parse_message(self.connection.acquisition.current_status())["status"] != "PROCESSING":
+            if log_waiting:
+                self.logger.info("Waiting for device to start processing")
+                log_waiting = False
 
         self.mk_run_dir = Path(parse_message(
             self.connection.protocol.get_current_protocol_run()
@@ -438,7 +444,8 @@ class ReadUntilClient:
             self._process_reads(reads)
         except Exception as e:
             self.logger.info(e)
-            raise
+            self.logger.info("MinKNOW may have finished acquisition, press Ctrl + C to exit ")
+            # TODO: Catch the RPC error here to handle nicely?
 
         # signal to the server that we are done with the stream.
         reads.cancel()
