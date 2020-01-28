@@ -95,7 +95,7 @@ class ReadUntilClient:
         cache_type="ReadCache",
         signal_calibration=False,
         filter_strands=True,
-        one_chunk=True,
+        one_chunk=False,
         pre_filter_classes=None,
         reload_rpc=True,
         log_file=None,
