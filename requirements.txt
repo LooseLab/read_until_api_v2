@@ -2,8 +2,3 @@ numpy
 grpcio
 google
 protobuf
-toml
-watchdog
-pandas==0.24.2
-mappy
-requests
