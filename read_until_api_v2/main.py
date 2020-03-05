@@ -27,6 +27,7 @@ from read_until_api_v2.load_minknow_rpc import get_rpc_connection, parse_message
 from read_until_api_v2.utils import nice_join, _import, setup_logger, new_thread_name
 
 
+
 __all__ = ["ReadUntilClient"]
 
 # This replaces the results of an old call to MinKNOWs
@@ -258,12 +259,22 @@ class ReadUntilClient:
 
         # Create the output dir if it doesn't already exist
         # Sometimes we are faster than MinKNOW, this isn't a problem on OS X
-        self.mk_run_dir.mkdir(parents=True, exist_ok=True)
-        self.unblock_logger = setup_logger(
-            # Necessary to use a str of the Path for 3.5 compatibility
-            "unblocks",
-            log_file=str(self.mk_run_dir / "unblocked_read_ids.txt"),
-        )
+
+        if self.mk_host in ("127.0.0.1","localhost"):
+            #we are running locally so:
+            self.mk_run_dir.mkdir(parents=True, exist_ok=True)
+            self.unblock_logger = setup_logger(
+                # Necessary to use a str of the Path for 3.5 compatibility
+                "unblocks",
+                log_file=str(self.mk_run_dir / "unblocked_read_ids.txt"),
+            )
+        else:
+            #we are running remotely:
+            self.unblock_logger = setup_logger(
+                # Necessary to use a str of the Path for 3.5 compatibility
+                "unblocks",
+                log_file="unblocked_read_ids.txt",
+            )
 
         # Get signal calibrations
         self.calibration, self.calibration_dtype = {
@@ -582,6 +593,7 @@ class ReadUntilClient:
                 samples_behind += read_samples_behind
                 raw_data_bytes += len(read.raw_data)
 
+                self.logger.debug("Classification: {}, {}, {}".format(read_channel,read.number,read.chunk_classifications))
                 # Removed list constructor around generator statement
                 strand_like = any(
                     x in self.strand_classes for x in read.chunk_classifications

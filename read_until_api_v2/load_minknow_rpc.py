@@ -174,7 +174,7 @@ def get_rpc_connection(target_device, host="127.0.0.1", port=9501, reload=False)
     response = stub.list_devices(list_request)
     for device in response.active:
         if device.name == target_device:
-            rpc_connection = rpc.Connection(port=device.ports.insecure_grpc)
+            rpc_connection = rpc.Connection(host=host,port=device.ports.insecure_grpc)
             message_port = device.ports.jsonrpc
             return rpc_connection, message_port
 
