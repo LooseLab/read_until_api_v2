@@ -270,6 +270,7 @@ class ReadUntilClient:
             )
         else:
             #we are running remotely:
+            self.mk_run_dir=Path(".")
             self.unblock_logger = setup_logger(
                 # Necessary to use a str of the Path for 3.5 compatibility
                 "unblocks",
