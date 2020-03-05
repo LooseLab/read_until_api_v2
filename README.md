@@ -16,31 +16,23 @@ Features
 Setup and Installation
 ===
 
-```bash
-# Make a virtual environment
-python3 -m venv venv3
-source ./venv3/bin/activate
+Installation
+------------
 
-# Clone repos
+```bash
+# Clone repositories
 git clone https://github.com/looselab/read_until_api_v2.git
-git clone https://github.com/looselab/pyguppyplay.git
 git clone https://github.com/looselab/ru.git
 
-# Install
-cd read_until_api_v2
+# Build ru code
+cd ru
+python3 -m venv venv3
+source ./venv3/bin/activate
 pip install --upgrade pip -r requirements.txt
 python setup.py develop
 
-cd ../pyguppyplay
+# Build read until api
+cd ../read_until_api_v2
 pip install -r requirements.txt
 python setup.py develop
-
-cd ../ru
-pip install -r requirements.txt
-python setup.py develop
-
 ```
-
-TODO
-===
-- Use gRPC `set_analysis_configuration` with an edited JSON file to configure MK

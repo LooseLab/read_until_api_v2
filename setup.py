@@ -12,9 +12,11 @@ exec(open("{}/_version.py".format(PKG)).read())
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-requirements = []
 setup_requirements = []
 test_requirements = []
+
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
 setup(
     author="Alex Payne",
